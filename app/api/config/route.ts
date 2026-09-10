@@ -1,2 +1,3 @@
-import {config} from '@/lib/pharmacy/server';
-export async function GET(){const c=config();return Response.json({configured:!!(c.url&&c.key)},{headers:{'Cache-Control':'no-store'}})}
+import {connectionStatus} from '@/lib/pharmacy/server';
+export const dynamic='force-dynamic';
+export async function GET(){return Response.json(await connectionStatus(),{headers:{'Cache-Control':'no-store'}})}
